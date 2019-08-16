@@ -67,18 +67,15 @@ class ProductFilterResults extends React.Component {
       const products = this.props.products;
       const results = [];
         
-      products.map((product) => {
-        if (this.props.gender === 0 || this.props.gender === 'All Products') {
-          results.push(<Product product={product} />);
-        }
-        else if (product.gender === this.props.gender) {
-          results.push(<Product product={product} />);
-        }   
+      products.filter((product) => {
+          if (product.type === 'mens') {
+            results.push(<Product product={product} />);
+          }
       });
           
       return (
         <div className="filter-results">
-            <div className="blocks blocks_3up row">
+            <div className="filtered-products-row row">
                 {results}
             </div>
         </div>
